@@ -15,6 +15,8 @@ export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     BeVietnam:require('../assets/fonts/BeVietnam-Regular.ttf'),
+    BoldBeVietnam:require('../assets/fonts/BeVietnam-Bold.ttf'),
+
   });
 
   useEffect(() => {
@@ -34,6 +36,8 @@ export default function RootLayout() {
         <Stack.Screen name="onboarding/index" options={{ headerShown: false }}  />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
+        <Stack.Screen name="auth/register" options={{ headerShown: false }} />
+        <Stack.Screen name="auth/signin" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );

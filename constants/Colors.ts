@@ -39,7 +39,14 @@ export const Colors = {
   white40:'rgba(255,255,255,0.4)',
   white20:'rgba(255,255,255,0.2)',
   Background:'#000000',
-  Surface:'#ffffff'
+  Surface:'#ffffff',
+  mainFont:'BeVietnam',
+  FontStyleMain:{
+    fontFamily:'BeVietnam'
+  },
+  BoldFontStyleMain:{
+    fontFamily:'BoldBeVietnam'
+  }
 
 
 };

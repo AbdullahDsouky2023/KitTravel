@@ -6,6 +6,7 @@ import { StatusBar } from 'expo-status-bar'
 import Button from '@/components/onboarding/Button'
 import { Colors } from '@/constants/Colors'
 import Animated, { useSharedValue, useAnimatedStyle, withSpring, withDelay, withTiming, Easing } from 'react-native-reanimated'
+import { router } from 'expo-router'
 
 type Props = {}
 
@@ -46,8 +47,17 @@ const Index = (props: Props) => {
       <Animated.View style={[tw`absolute bottom-[100px] w-full`, buttonsAnimatedStyle]}>
         <SafeAreaView>
           <View style={tw`flex gap-4 justify-between px-5`}>
-            <Button title='Login' />
-            <Button title='Register' style={tw`bg-transparent border border-[${Colors.white}]`} styleText={tw`text-[${Colors.white}]`} />
+            <Button title='Login'
+                 onPress={() => {
+                  router.push('/auth/signin')
+                 }}
+            />
+            <Button title='Register' 
+              onPress={() => {
+              router.push('/auth/register')
+              }}
+
+            style={tw`bg-transparent border border-[${Colors.white}]`} styleText={tw`text-[${Colors.white}]`} />
           </View>
         </SafeAreaView>
       </Animated.View>
