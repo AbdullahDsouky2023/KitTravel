@@ -6,8 +6,10 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { loadToken } from '@/utils/auth';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
+
+// import { loadToken } from '@/utils/storage';
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -20,10 +22,22 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-      router.replace('/onboarding');
+   const OnLoad= async()=>{
+    try {
+      if (loaded) {
+        SplashScreen.hideAsync();
+       const token = await loadToken()
+        if(token){
+          router.replace('/(tabs)')
+        }else {
+          router.replace('/onboarding');
+        }
+      }
+    } catch (error) {
+      
     }
+   }
+   OnLoad()
   }, [loaded]);
 
   if (!loaded) {
@@ -38,6 +52,7 @@ export default function RootLayout() {
         <Stack.Screen name="+not-found" />
         <Stack.Screen name="auth/register" options={{ headerShown: false }} />
         <Stack.Screen name="auth/signin" options={{ headerShown: false }} />
+        <Stack.Screen name="exploreMoreScreen" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );

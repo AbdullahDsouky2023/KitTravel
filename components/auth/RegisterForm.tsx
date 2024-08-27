@@ -12,6 +12,9 @@ import Button from '../onboarding/Button';
 import { Colors } from '@/constants/Colors';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import { Link } from 'expo-router';
+import { register } from '@/utils/auth';
+import { router } from 'expo-router';
+
 const { height , width  } = Dimensions.get('window');
 
 const schema = z.object({
@@ -28,9 +31,22 @@ const RegisterForm: React.FC = () => {
         mode: 'onChange',
     });
 
-    const onSubmit = (data: FormData) => {
-        console.log('Form data:', data);
-        // Handle form submission (e.g., API call to register user)
+
+    
+    const onSubmit = async (data: FormData) => {
+      try {
+        const response = await register(data.email, data.password);
+
+        console.log(response);
+        if(response.token){
+        router.replace('/(tabs)/explore')
+        }
+      
+        // Handle successful registration (e.g., show success message, navigate to login)
+      } catch (error) {
+        console.error('Registration error:', error.response?.data || error?.message);
+        // Handle registration error (e.g., show error message)
+      }
     };
 
     return (

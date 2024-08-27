@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, useWindowDimensions, TouchableOpacity, View, StyleSheet, Dimensions } from 'react-native';
+import { Text, useWindowDimensions, TouchableOpacity, View, StyleSheet, Dimensions, Alert } from 'react-native';
 
 import tw from 'twrnc';
 import { useForm, Controller } from 'react-hook-form';
@@ -11,7 +11,9 @@ import InputComponent from '../InputComponent';
 import Button from '../../onboarding/Button';
 import { Colors } from '@/constants/Colors';
 import { RFPercentage } from 'react-native-responsive-fontsize';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
+import axios from 'axios';
+import { login } from '@/utils/auth';
 const { height , width  } = Dimensions.get('window');
 
 const schema = z.object({
@@ -27,9 +29,23 @@ const LoginForm: React.FC = () => {
         mode: 'onChange',
     });
 
-    const onSubmit = (data: FormData) => {
-        console.log('Form data:', data);
-    };
+    const onSubmit = async (data: FormData) => {
+        try {
+          const response = await login(data.email, data.password);
+          console.log(response);
+          if(response.token){
+          router.replace('/(tabs)/explore')
+          }else {
+
+              Alert.alert('Error', response.message);
+            }
+          // Handle successful registration (e.g., show success message, navigate to login)
+        } catch (error) {
+            Alert.alert('Error', error.response?.data.message);
+          console.error('Registration error:', error.response?.data || error?.message);
+          // Handle registration error (e.g., show error message)
+        }
+      };
 
     return (
         <View style={tw`flex-1 gap-2 my-4`}>
