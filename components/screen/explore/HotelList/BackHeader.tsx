@@ -5,11 +5,15 @@ import { RFPercentage } from 'react-native-responsive-fontsize'
 import { Colors } from '@/constants/Colors'
 import {  chevronLeft, chevronRight } from '@/assets'
 import { router } from 'expo-router'
-type Props = {}
+type Props = {
+  title: string
+}
 
-const BackHeader = (props: Props) => {
+const BackHeader = ({
+  title
+}: Props) => {
   return (
-    <View style={tw`flex flex-row items-center  gap-4 px-4 my-8 mb-4`}>
+    <View style={tw`flex flex-row items-center  gap-4 px-4 mb-4`}>
   <Pressable onPress={()=>router.back()} >
       <Image
       source={chevronLeft}
@@ -18,7 +22,7 @@ const BackHeader = (props: Props) => {
   </Pressable>
   <View>
 
-<Text style={[tw`text-[${RFPercentage(2.7)}px] `,Colors.FontStyleMain]}>Budget Staycation</Text>
+<Text style={[tw`text-[${RFPercentage(2.7)}px] `,Colors.FontStyleMain]}>{title ? title : 'Budget Staycation'} </Text>
   </View>
     </View>
   )

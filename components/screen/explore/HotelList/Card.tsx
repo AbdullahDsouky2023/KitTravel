@@ -1,15 +1,18 @@
-import { View, Text, Image, useWindowDimensions } from 'react-native'
+import { View, Text, Image, useWindowDimensions, TouchableWithoutFeedback, Pressable } from 'react-native'
 import React from 'react'
 import { card1, love } from '@/assets'
 import tw from 'twrnc'
 import { Colors } from '@/constants/Colors'
 import { RFPercentage } from 'react-native-responsive-fontsize'
+import { router } from 'expo-router'
 type Props = {}
 
 const Card = (props: Props) => {
   const { width } = useWindowDimensions();
   return (
-    <View style={tw`relative w-[${width*0.44}px]`}>
+    <Pressable
+    onPress={()=>router.push('/hotel/1')}
+    style={tw`relative w-[${width*0.44}px]`}>
      <Image
      source={card1}
      style={{
@@ -34,7 +37,7 @@ const Card = (props: Props) => {
         <Text style={[tw`text-[${RFPercentage(0.28)}] text-gray-500 mt-1`,Colors.FontStyleMain]}>/night</Text>
             </View>
      </View>
-    </View>
+    </Pressable>
   )
 }
 

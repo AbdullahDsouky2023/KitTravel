@@ -1,4 +1,5 @@
 import Ac from './icons/Icon/ac.png'
+import Avatar from './icons/Icon/Avatar.png'
 import alertCircle from './icons/Icon/alert-circle.png'
 import arrowDown from './icons/Icon/arrow-down.png'
 import arrowLeft from './icons/Icon/arrow-left.png'
@@ -64,6 +65,9 @@ import xCircle from './icons/Icon/x-circle.png'
 import x from './icons/Icon/x.png'
 import banner from './images/banner.png'
 import card1 from './images/Image.png'
+import visa from './icons/Icon/visa.png'
+import invoice from './icons/Icon/Invoice.png'
+import Barcode from  './icons/Icon/Barcode.png'
 export {
     Ac,
     alertCircle,
@@ -130,5 +134,9 @@ export {
     xCircle,
     x,
     banner,
-    card1
+    card1,
+    visa,
+    Avatar,
+    invoice,
+    Barcode
 }

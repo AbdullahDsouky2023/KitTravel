@@ -39,7 +39,7 @@ const RegisterForm: React.FC = () => {
 
         console.log(response);
         if(response.token){
-        router.replace('/(tabs)/explore')
+        router.replace('/(tabs)')
         }
       
         // Handle successful registration (e.g., show success message, navigate to login)
