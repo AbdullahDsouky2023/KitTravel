@@ -15,9 +15,9 @@ const CheckAvailabilityScreen = (props: Props) => {
             <ScrollView style={tw`flex-1 text-white relative bg-white px-4 mb-6`} showsVerticalScrollIndicator={false}>
                 <AppText style={tw`text-[${RFValue(18)}px] relative px-4 mt-8`}>Check Avaibility</AppText>
                 <Line />
-                <CalendarComponent />
+                <CalendarComponent reservation={false} />
             </ScrollView>
-            <FloatingPricing pay={true} />
+            <FloatingPricing  pay={true} confirm={false} />
         </View>
     )
 }

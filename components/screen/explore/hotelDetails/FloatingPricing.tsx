@@ -8,10 +8,11 @@ import { router } from 'expo-router'
 type Props = {
   pay: boolean
   confirm: boolean
+  date?: string
 }
 
 const FloatingPricing = (props: Props) => {
-  const {pay, confirm} = props
+      const {pay, confirm, date} = props
   
   const handlePress = () => {
     if (pay) {

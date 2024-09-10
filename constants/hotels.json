@@ -1,0 +1,36 @@
+  {
+    "hotels": [
+      {
+        "name": "Tropical Paradise Resort",
+        "pricePerNight": 250,
+        "image": "https://example.com/tropical-paradise.jpg",
+        "location": "Kuto.133km"
+      },
+      {
+        "name": "Seaside Serenity Hotel",
+        "pricePerNight": 180,
+        "image": "https://example.com/seaside-serenity.jpg",
+        "location": "Kuto.145km"
+      },
+      {
+        "name": "Mountain View Lodge",
+        "pricePerNight": 200,
+        "image": "https://example.com/mountain-view.jpg",
+        "location": "Kuto.120km"
+      },
+      {
+        "name": "Urban Oasis Suites",
+        "pricePerNight": 300,
+        "image": "https://example.com/urban-oasis.jpg",
+        "location": "Kuto.100km"
+      },
+      {
+        "name": "Riverside Retreat",
+        "pricePerNight": 220,
+        "image": "https://example.com/riverside-retreat.jpg",
+        "location": "Kuto.160km"
+      }
+    ]
+  }
+
+ 

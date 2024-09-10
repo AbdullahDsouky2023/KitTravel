@@ -53,17 +53,8 @@ export default function RootLayout() {
         <Stack.Screen name="auth/register" options={{ headerShown: false }} />
         <Stack.Screen name="auth/signin" options={{ headerShown: false }} />
         <Stack.Screen name="exploreMoreScreen" options={{ headerShown: false }} />
-        <Stack.Screen name="hotel/[id]" options={{ headerShown: false ,presentation:'containedModal'}} />
-        <Stack.Screen name="hotel/details/about" options={{ headerShown: false ,presentation:'modal'}} />
-        <Stack.Screen name="hotel/details/offers" options={{ headerShown: false ,presentation:'modal'}} />
-        <Stack.Screen name="hotel/details/rating" options={{ headerShown: false ,presentation:'modal'}} />
-        <Stack.Screen name="hotel/details/avaiablity" options={{ headerShown: false ,presentation:'modal'}} />
-        <Stack.Screen name="hotel/details/payment" options={{ headerShown: false,
-          presentation:'fullScreenModal'
-         }} />
-        <Stack.Screen name="hotel/details/successPayment" options={{ headerShown: false,
-          presentation:'fullScreenModal'
-         }} />
+        <Stack.Screen name="hotel" options={{ headerShown: false ,presentation:'fullScreenModal'}} />
+        <Stack.Screen name="booking" options={{ headerShown: false ,presentation:'containedModal'}} />
       </Stack>
     </ThemeProvider>
   );

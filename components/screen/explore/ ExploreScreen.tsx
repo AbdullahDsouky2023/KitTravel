@@ -8,6 +8,7 @@ import RandomDistinationAction from './RandomDistinationAction'
 type Props = {}
 
 const  ExploreScreen = (props: Props) => {
+
   return (
     <ScrollView style={tw`flex-1 bg-white `} showsVerticalScrollIndicator={false}>
         <HeroSection/>

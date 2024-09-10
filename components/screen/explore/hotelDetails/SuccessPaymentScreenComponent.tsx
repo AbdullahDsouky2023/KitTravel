@@ -6,15 +6,18 @@ import { Colors } from '@/constants/Colors'
 import AppText from '@/components/AppText'
 import { Barcode, invoice, visa } from '@/assets'
 import Button from '@/components/onboarding/Button'
-import { router } from 'expo-router'
+import { router, useNavigation } from 'expo-router'
+import ArrowBack from '@/components/auth/ArrowBack'
 
 type Props = {}
 
 const SuccessPaymentScreenComponent = (props: Props) => {
+    const navigation = useNavigation()
     return (
         <SafeAreaView style={tw`flex-1 bg-white `}>
 
             <Header />
+            {/* <ArrowBack  /> */}
             <View style={tw`flex-1 gap-2 mt-8 `}>
                 <Image
                     source={invoice}
@@ -69,7 +72,12 @@ const SuccessPaymentScreenComponent = (props: Props) => {
             <View style={tw`flex-1 justify-center items-center`}>
                 <Button
                     title='Back to Home'
-                    onPress={() => router.back()}
+                    onPress={() => {
+                        router.back()
+                        router.navigate('/(tabs)/tickets')
+                        router.dismissAll()
+                        console.log('back to home', navigation.canGoBack())
+                    }}
                     style={tw`w-90 self-center border border-black`}
                 />
             </View>

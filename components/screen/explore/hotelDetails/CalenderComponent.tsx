@@ -4,13 +4,28 @@ import { Calendar, DateData } from 'react-native-calendars';
 import tw from 'twrnc';
 import { Colors } from '@/constants/Colors';
 
-const CalendarComponent = () => {
+const CalendarComponent = ({
+  reservation
+}: {
+  reservation: boolean
+}) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
   const onDayPress = (day: DateData) => {
     Vibration.vibrate(50); // Short vibration for feedback
-
+    if(reservation){
+      if (!startDate || (startDate && endDate)) {
+        setStartDate(day.dateString);
+        setEndDate('');
+      }else if(startDate && !endDate && day.dateString > startDate){
+        setStartDate(day.dateString);
+      }else{
+        setStartDate(day.dateString);
+        setEndDate('');
+      }
+      return;
+    }
     if (!startDate || (startDate && endDate)) {
       setStartDate(day.dateString);
       setEndDate('');
@@ -74,7 +89,6 @@ const CalendarComponent = () => {
           textMonthFontFamily: Colors.BoldFontStyleMain,
           textDayHeaderFontFamily: Colors.BoldFontStyleMain,
           'stylesheet.day.period': {
-          
             
           },
         }}

@@ -7,6 +7,7 @@ import SearchComponent from './SearchComponent'
 import ButtonComponent from './ButtonComponent'
 import { RFPercentage } from 'react-native-responsive-fontsize'
 import Button from '@/components/onboarding/Button'
+import { router } from 'expo-router'
 type Props = {}
 
 
@@ -18,6 +19,7 @@ const ButtonContainerComponent = (props: Props) => {
 <ButtonComponent
  icon={flight}
  title='Flights'
+ onPress={() => router.navigate('/booking')}
 />
 <ButtonComponent
  icon={home}
