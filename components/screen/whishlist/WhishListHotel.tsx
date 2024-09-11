@@ -2,20 +2,16 @@ import { View, Text, Image, FlatList } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { card1, love } from '@/assets'
 import tw from 'twrnc'
-import Card from './Card'
 import Hotel from '@/types/hotel'
 import { getAllHotels } from '@/utils/HotelsApi'
+import Card from '@/components/screen/explore/HotelList/Card'
+import { useHotelsStore } from '@/store/hotels/HotelsStore'
 type Props = {
   horizontal?:boolean
 }
 
-const HotelListCoomponent = ({horizontal}: Props) => {
-  const [hotels, setHotels] = useState<Hotel[]>([]);
-  useEffect(() => {
-    getAllHotels().then(setHotels).catch((error) => {
-      console.log('error', error.message)
-    });
-  }, []);
+const WhishListHotelComponet = ({horizontal}: Props) => {
+  const hotels = useHotelsStore((state) => state.hotels)
   return (
  <View>
   <FlatList
@@ -26,9 +22,9 @@ const HotelListCoomponent = ({horizontal}: Props) => {
   />}
   numColumns={horizontal ? 1 : 2}
   showsVerticalScrollIndicator={false}
-  columnWrapperStyle={!horizontal ? tw`my-4 flex gap-4 items-center justify-center` : null}
+  columnWrapperStyle={!horizontal ? tw`my-4 flex gap-4 px-4 ` : null}
   keyExtractor={(item) => item.name}
-  contentContainerStyle={tw`flex gap-4`}
+  // contentContainerStyle={tw`flex gap-4 px-4 flex-row gap-4 wrap w-full`}
   showsHorizontalScrollIndicator={false}
   />
 
@@ -36,4 +32,4 @@ const HotelListCoomponent = ({horizontal}: Props) => {
   )
 }
 
-export default HotelListCoomponent
+export default WhishListHotelComponet

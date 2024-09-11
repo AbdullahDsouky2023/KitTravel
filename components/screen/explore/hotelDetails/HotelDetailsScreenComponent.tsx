@@ -24,22 +24,23 @@ import GuideDetails from './GuideDetails';
 import ReviewCard from './ReviewCard';
 import ReviewContainer from './ReviewContainer';
 import FloatingPricing from './FloatingPricing';
+import Hotel from '@/types/hotel';
 
 const { width } = Dimensions.get('window');
 
 
 type Props = {
-  // Add any specific props here
+hotel:Hotel
 };
 
 const ICON_SIZE = 40;
 const ICON_COLOR = '#FFFFFF';
 
-const images = [
-  card1, card1, card1, card1, card1
-];
 
-const HotelDetailsScreenComponent: React.FC<Props> = () => {
+
+const HotelDetailsScreenComponent: React.FC<Props> = ({
+  hotel
+}) => {
 
 
   const handleGoBack = () => {
@@ -57,7 +58,7 @@ const HotelDetailsScreenComponent: React.FC<Props> = () => {
         showsVerticalScrollIndicator={false}
         scrollEnabled={true}>
         <ImageSlider
-          images={images}
+          images={hotel.images}
         />
         <StatusBar style='light' />
         <View style={tw`absolute top-0 left-0 right-0 h-[350px]`}>
@@ -97,12 +98,12 @@ const HotelDetailsScreenComponent: React.FC<Props> = () => {
 
         <HotelList containerStyle={tw`my-8`} />
         <Line />
-        <GuideDetails/>
+        <GuideDetails />
         <Line />
-      <ReviewContainer/>
+        <ReviewContainer />
         <Line />
       </ScrollView>
-    <FloatingPricing/>
+      <FloatingPricing />
     </View>
   );
 };

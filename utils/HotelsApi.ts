@@ -1,26 +1,17 @@
-// import Amadeus from 'amadeus';
+import api from ".";
+import Hotel from "../types/hotel";
 
-// const amadeus = new Amadeus({
-//   clientId: 'zmlIfXSQ8iQQ58JxPhELdUSIZ3NrtCrQ',
-//   clientSecret: 'ZCIG6cVus3DBjhSj'
-// });
-
-// export const searchFlightOffers = async (
-//   originLocationCode: string,
-//   destinationLocationCode: string,
-//   departureDate: string,
-//   adults: string
-// ): Promise<any> => {
-//   try {
-//     const response = await amadeus.shopping.flightOffersSearch.get({
-//       originLocationCode,
-//       destinationLocationCode,
-//       departureDate,
-//       adults
-//     });
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error searching flight offers:', error);
-//     throw error;
-//   }
-// };
+const getAllHotels = async (): Promise<Hotel[]> => {
+    const response = await api.get("/hotels");
+    // console.log('response.data', response.data)
+    return response.data;
+}
+const getHotelById = async (id: string): Promise<Hotel> => {
+    const response = await api.get(`/hotels/${id}`);
+    console.log('getHotelById response.data', response.data)
+    return response.data;
+}
+export {
+    getAllHotels,
+    getHotelById
+}

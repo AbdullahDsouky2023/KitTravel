@@ -21,7 +21,7 @@ const setAuthToken = async (token) => {
 
 export const login = async (email, password) => {
   try {
-    const res:responseType = await axios.post('http://192.168.1.7:5000/api/users/login', { email, password });
+    const res:responseType = await axios.post('http://localhost:5000/api/users/login', { email, password });
     await setAuthToken(res.data.token);
     return res.data;
   } catch (error) {
@@ -31,7 +31,7 @@ export const login = async (email, password) => {
 
 export const register = async (email, password) => {
   try {
-    const res:responseType = await axios.post('http://192.168.1.7:5000/api/users/register', { email, password });
+    const res:responseType = await axios.post('http://192.168.1.3:5000/api/users/register', { email, password });
     await setAuthToken(res.data.token);
     return res.data;
   } catch (error) {
