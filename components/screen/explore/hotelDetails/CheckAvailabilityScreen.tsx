@@ -19,7 +19,7 @@ const CheckAvailabilityScreen = (props: Props) => {
                 <Line />
                 <CalendarComponent reservation={false} />
             </ScrollView>
-            <FloatingPricing  pay={true} confirm={false} price={Number(price)} />
+            <FloatingPricing  pay={false} confirm={false} price={Number(price)} selectGuests={true} />
         </View>
     )
 }

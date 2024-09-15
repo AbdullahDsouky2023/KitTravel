@@ -11,6 +11,7 @@ const getHotelById = async (id: string): Promise<Hotel> => {
     console.log('getHotelById response.data', response.data)
     return response.data;
 }
+
 export {
     getAllHotels,
     getHotelById

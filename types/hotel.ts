@@ -37,4 +37,9 @@ interface guide {
     "reviewCount": number;
 
 }
-export { Room, guide };
+enum GuestType {
+    ADULTS = 'adults',
+    CHILDREN = 'children',
+    INFANTS = 'infants'
+}
+export { Room, guide, GuestType };

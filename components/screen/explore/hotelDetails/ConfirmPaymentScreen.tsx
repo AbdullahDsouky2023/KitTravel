@@ -37,10 +37,15 @@ const ConfirmPaymentScreen = (props: Props) => {
       <PaymentMethod/>
     </ScrollView>
     <FloatingPricing
+    selectGuests={false}
     confirm={true}
     pay={false}
     hotel={hotel as Hotel}
     price={hotel?.pricePerNight || 0}
+    onPress={() => {
+      router.navigate('/hotel/details/payment')
+      toast.success('Payment Method Selected Successfully')
+    }}
     />
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -81,6 +86,9 @@ const PeopeDetails = () => {
     return date.getDate() + ' ' + date.toLocaleString('en-US', { month: 'long' });
   }
 
+  const {numberOfGuests} = useBookingStore()
+  console.log(numberOfGuests)
+  const {adults, children, infants} = numberOfGuests
   return (
     <View style={tw` px-4`}>
     <AppText style={tw`text-[${RFValue(18)}px] font-bold`}>
@@ -115,14 +123,16 @@ const PeopeDetails = () => {
       <View style={tw``}>
 
       <AppText style={tw`text-[${RFValue(15)}px] font-bold`}>
-      Guests          </AppText>
+      Guests         
+       </AppText>
       <AppText style={tw`text-[${RFValue(13)}px] text-gray-400 font-bold`}>
-      2 Adults          </AppText>
+      {adults} Adults, {children} Children, {infants} Infants
+        </AppText>
       </View>
       <Button
       title="Edit Guests"
       onPress={() => {
-        toast('Hello, World!')        // router.navigate('/hotel/details/guests')
+         router.navigate('/hotel/details/guests')
       }}
       style={tw`border border-[${Colors.Black100}]  max-w-[${RFValue(100)}px] h-[${RFValue(30)}px] rounded-lg px-1 py-1`}
       />

@@ -8,15 +8,24 @@ import { Barcode, invoice, visa } from '@/assets'
 import Button from '@/components/onboarding/Button'
 import { router, useNavigation } from 'expo-router'
 import ArrowBack from '@/components/auth/ArrowBack'
+import { useBookingStore } from '@/store/booking/BookingStore'
+import { formatDate } from '@/components/AppUtils/hotel/utils'
 
 type Props = {}
 
 const SuccessPaymentScreenComponent = (props: Props) => {
     const navigation = useNavigation()
+    const {hotel,checkInDate,checkOutDate,numberOfGuests} = useBookingStore()
+
+
     return (
         <SafeAreaView style={tw`flex-1 bg-white `}>
 
-            <Header />
+            <Header 
+            hotelName={hotel?.name || ''}
+            checkInDate={formatDate(checkInDate)}
+            checkOutDate={formatDate(checkOutDate)}
+            />
             {/* <ArrowBack  /> */}
             <View style={tw`flex-1 gap-2 mt-8 `}>
                 <Image
@@ -38,15 +47,15 @@ const SuccessPaymentScreenComponent = (props: Props) => {
                             Hotel Info
                         </AppText>
                         <AppText style={tw`text-center text-[${RFValue(11)}px] text-gray-400 font-bold`}>
-                            Saza Villa at Bali
-                        </AppText>
+                      {hotel?.name}
+                            </AppText>
                     </View>
                     <View style={tw`flex justify-start items-start  gap-1`}>
                         <AppText style={tw`text-center text-[${RFValue(13)}px] font-bold`}>
                             Date
                         </AppText>
                         <AppText style={tw`text-center text-[${RFValue(11)}px] text-gray-400 font-bold`}>
-                            11 Jun - 27 Jun, 2021
+                            {formatDate(checkInDate)} - {formatDate(checkOutDate)}
                         </AppText>
                     </View>
                     <View style={tw`flex justify-start items-start  gap-1`}>
@@ -54,7 +63,7 @@ const SuccessPaymentScreenComponent = (props: Props) => {
                             Guests
                         </AppText>
                         <AppText style={tw`text-center text-[${RFValue(11)}px] text-gray-400 font-bold`}>
-                            2 Adults, 1 Child
+                            {numberOfGuests.adults} Adults, {numberOfGuests.children} Child {numberOfGuests.infants} Infant
                         </AppText>
                     </View>
                     <View style={tw`flex justify-start  mr-2  my-4  gap-1`}>
@@ -87,30 +96,39 @@ const SuccessPaymentScreenComponent = (props: Props) => {
 
 export default SuccessPaymentScreenComponent
 
-const Header = () => {
+const Header = ({
+    hotelName,
+    checkInDate,
+    checkOutDate
+}: {
+    hotelName: string
+    checkInDate: string
+    checkOutDate: string
+}) => {
     return (
         <View style={tw` gap-2 mt-8 `}>
 
 
-            <AppText style={tw`text-center text-[${RFValue(22)}px] font-bold`}>
+            <AppText style={tw`text-center text-[${RFValue(20)}px] font-bold`}>
                 Reservation Success
             </AppText>
-            <View style={tw`flex-row gap-1 justify-center`}>
+            <View style={tw`flex-row gap-1 justify-center max-w-[${RFValue(300)}px]`}>
 
-                <AppText style={tw`text-center text-[${RFValue(14)}px] text-gray-400 font-medium`}>
+                <AppText style={tw`text-center text-[${RFValue(13)}px] px-2 text-gray-400 font-medium`}>
                     Your reservation at
                 </AppText>
-                <AppText style={tw`text-center text-[${RFValue(14)}px]  font-medium`}>
-                    Saza Villa at Bali
+                <AppText style={tw`text-center text-[${RFValue(13)}px]  font-medium `}>
+                    {hotelName}
                 </AppText>
             </View>
             <View style={tw`flex-row gap-1 justify-center`}>
 
-                <AppText style={tw`text-center text-[${RFValue(14)}px] text-gray-400 font-medium`}>
-                    booked at 20 June
+                <AppText style={tw`text-center text-[${RFValue(13)}px] text-gray-400 font-medium`}>
+                    booked at {checkInDate}
                 </AppText>
-                <AppText style={tw`text-center text-[${RFValue(14)}px]  font-medium`}>
-                    - 27 Aug          </AppText>
+                <AppText style={tw`text-center text-[${RFValue(13)}px]  font-medium`}>
+                   - {checkOutDate}       
+                       </AppText>
             </View>
         </View>
     )

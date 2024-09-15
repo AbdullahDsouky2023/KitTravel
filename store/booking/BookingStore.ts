@@ -11,14 +11,19 @@ interface BookingState {
     description: string;
     name: string;
   } | null;
-  numberOfGuests: number;
+  numberOfGuests: {
+    adults: number;
+    children: number;
+    infants: number;
+  };
   totalPrice: number;
   serviceFee: number;
   setHotel: (hotel: Hotel) => void;
   setDates: (checkIn: Date, checkOut: Date) => void;
   setRoom: (room: { description: string; name: string;}) => void;
-  setGuests: (guests: number) => void;
+  setGuests: (guests: {adults: number, children: number, infants: number} ) => void;
   calculateTotalPrice: () => void;
+  calculateServiceFee: () => void;
   clearBooking: () => void;
 }
 
@@ -29,7 +34,11 @@ export const useBookingStore = create<BookingState>()(
       checkInDate: null,
       checkOutDate: null,
       selectedRoom: null,
-      numberOfGuests: 1,
+      numberOfGuests: {
+        adults: 1,
+        children: 0,
+        infants: 0
+      },
       totalPrice: 0,
       serviceFee: 0,
       setHotel: (hotel) => set({ hotel }),
@@ -44,10 +53,12 @@ export const useBookingStore = create<BookingState>()(
         get().calculateTotalPrice();
       },
 
-      setGuests: (guests) => set({ numberOfGuests: guests }),
+      setGuests: (guests) => set({ 
+        numberOfGuests: guests
+      }),
 
       calculateTotalPrice: () => {
-        const { checkInDate, checkOutDate, selectedRoom ,hotel} = get();
+        const { checkInDate, checkOutDate, selectedRoom, hotel } = get();
         if (checkInDate && checkOutDate && selectedRoom && hotel) {
           const nights = Math.ceil((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24));
           const price = nights * hotel.pricePerNight;
@@ -68,7 +79,11 @@ export const useBookingStore = create<BookingState>()(
         checkInDate: null,
         checkOutDate: null,
         selectedRoom: null,
-        numberOfGuests: 1,
+        numberOfGuests: {
+          adults: 1,
+          children: 1,
+          infants: 1
+        },
         totalPrice: 0
       }),
     }),

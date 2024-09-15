@@ -6,7 +6,7 @@ import { router, Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { loadToken } from '@/utils/auth';
 import { Toaster } from 'sonner-native';
@@ -48,6 +48,9 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <GestureHandlerRootView>
+        
+
       <Stack>
         <Stack.Screen name="onboarding/index" options={{ headerShown: false }}  />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -57,9 +60,9 @@ export default function RootLayout() {
         <Stack.Screen name="exploreMoreScreen" options={{ headerShown: false }} />
         <Stack.Screen name="hotel" options={{ headerShown: false ,presentation:'fullScreenModal'}} />
         <Stack.Screen name="booking" options={{ headerShown: false ,presentation:'containedModal'}} />
-
       </Stack>
       <Toaster/>
+      </GestureHandlerRootView>
     </ThemeProvider>
   );
 }

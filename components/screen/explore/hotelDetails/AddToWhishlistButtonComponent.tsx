@@ -6,7 +6,7 @@ import tw from "twrnc"
 import { RFValue } from "react-native-responsive-fontsize"
 import { Colors } from "@/constants/Colors"
 import { AntDesign } from "@expo/vector-icons"
-
+import { toast } from "sonner-native"
 type Props = {
     _id: string
 }
@@ -17,8 +17,10 @@ const AddToWhishlistButtonComponent = (props: Props) => {
     const handleWhishlist = () => {
         if (isWhishlist) {
             deleteHotel(props._id);
+            toast.success("Hotel removed from whishlist")
         } else {
             setHotel(props._id);
+            toast.success("Hotel added to whishlist")
         }
     }
     return (
