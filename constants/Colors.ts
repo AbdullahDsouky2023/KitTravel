@@ -3,6 +3,8 @@
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
+import { PlatformColor } from "react-native";
+
 const tintColorLight = '#0a7ea4';
 const tintColorDark = '#fff';
 
@@ -50,3 +52,18 @@ export const Colors = {
 
 
 };
+
+
+export const BlurHeaderStyle = {
+  headerShown:true,
+  headerTransparent: true,
+  headerLargeTitle:true,
+  headerLargeTitleShadowVisible:false,
+  headerBlurEffect:'prominent',
+  headerStyle:{
+    backgroundColor: 'rgba(255,255,255,0.01)'
+  },
+  headerLargeStyle: {
+    backgroundColor: PlatformColor('systemBackground')
+  }
+}

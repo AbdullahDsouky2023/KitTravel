@@ -3,7 +3,7 @@ import { View, Vibration } from 'react-native';
 import { Calendar, DateData } from 'react-native-calendars';
 import tw from 'twrnc';
 import { Colors } from '@/constants/Colors';
-
+import { useBookingStore } from '@/store/booking/BookingStore';
 const CalendarComponent = ({
   reservation
 }: {
@@ -11,7 +11,8 @@ const CalendarComponent = ({
 }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-
+  const {setDates,checkInDate,checkOutDate} = useBookingStore()
+console.log(checkInDate,checkOutDate)
   const onDayPress = (day: DateData) => {
     Vibration.vibrate(50); // Short vibration for feedback
     if(reservation){
@@ -20,7 +21,9 @@ const CalendarComponent = ({
         setEndDate('');
       }else if(startDate && !endDate && day.dateString > startDate){
         setStartDate(day.dateString);
+
       }else{
+            setDates(new Date(startDate), new Date(day.dateString))
         setStartDate(day.dateString);
         setEndDate('');
       }
@@ -29,11 +32,14 @@ const CalendarComponent = ({
     if (!startDate || (startDate && endDate)) {
       setStartDate(day.dateString);
       setEndDate('');
+      setDates(new Date(startDate), new Date(day.dateString))
     } else if (startDate && !endDate && day.dateString > startDate) {
       setEndDate(day.dateString);
+      setDates(new Date(startDate), new Date(day.dateString))
     } else {
       setStartDate(day.dateString);
       setEndDate('');
+      setDates(new Date(startDate), new Date(day.dateString))
     }
   };
 

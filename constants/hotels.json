@@ -1,109 +1,251 @@
 [
   {
     "name": "Sunset Paradise Resort",
-    "location": "Maldives",
     "description": "Luxurious overwater bungalows with breathtaking ocean views",
     "rating": 4.8,
+    "pricePerNight": 850,
     "images": [
       "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
       "https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1365&q=80"
-    ]
+    ],
+    "features": ["Ac", "wifi", "kitchen"],
+    "about": "Sunset Paradise Resort is a luxurious haven nestled in the heart of the Maldives. Our overwater bungalows offer unparalleled views of the crystal-clear Indian Ocean. Guests can enjoy world-class dining, spa treatments, and a variety of water activities. The resort is committed to sustainable tourism and preserving the natural beauty of the Maldives.",
+    "rates": [
+      {
+        "name": "John Doe",
+        "date": "2023-05-15",
+        "avatar": "https://randomuser.me/api/portraits/men/1.jpg",
+        "rating": 5,
+        "review": "Absolutely stunning resort! The overwater bungalow was a dream come true."
+      },
+      {
+        "name": "Jane Smith",
+        "date": "2023-04-22",
+        "avatar": "https://randomuser.me/api/portraits/women/2.jpg",
+        "rating": 4.5,
+        "review": "Beautiful location and excellent service. Slightly pricey but worth it for a special occasion."
+      }
+    ],
+    "location": {
+      "latitude": 3.2028,
+      "longitude": 73.2207
+    },
+    "rooms": [
+      {
+        "name": "Deluxe Overwater Bungalow",
+        "description": "1 king bed ∙ 1 couch ∙ 1 private deck"
+      },
+      {
+        "name": "Premium Ocean View Suite",
+        "description": "1 king bed ∙ 1 sofa bed ∙ 1 infinity pool"
+      }
+    ],
+    "guide": {
+      "name": "Aisha Maldives",
+      "avatar": "https://randomuser.me/api/portraits/women/20.jpg",
+      "description": "Local expert with 10 years of experience in Maldivian hospitality",
+      "rating": 4.9,
+      "reviewCount": 203
+    }
   },
   {
     "name": "Mountain Haven Lodge",
-    "location": "Swiss Alps",
     "description": "Cozy alpine retreat with world-class skiing facilities",
     "rating": 4.6,
+    "pricePerNight": 850,
+
     "images": [
       "https://images.unsplash.com/photo-1601581975053-7c899da7347e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
       "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-    ]
+    ],
+    "features": ["Ac", "fire", "firstAid"],
+    "about": "Mountain Haven Lodge is a picturesque retreat nestled in the heart of the Swiss Alps. Our lodge offers a perfect blend of traditional alpine charm and modern luxury. Guests can enjoy world-class skiing in winter, hiking in summer, and breathtaking mountain views year-round. Our on-site restaurant serves authentic Swiss cuisine using locally-sourced ingredients.",
+    "rates": [
+      {
+        "name": "Michael Brown",
+        "date": "2023-03-10",
+        "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
+        "rating": 4.8,
+        "review": "Fantastic ski resort with amazing views. The staff was incredibly helpful and friendly."
+      },
+      {
+        "name": "Sarah Johnson",
+        "date": "2023-02-15",
+        "avatar": "https://randomuser.me/api/portraits/women/4.jpg",
+        "rating": 4.5,
+        "review": "Cozy rooms and great amenities. Perfect for a winter getaway."
+      }
+    ],
+    "location": {
+      "latitude": 46.6203,
+      "longitude": 8.0339
+    },
+    "rooms": [
+      {
+        "name": "Alpine Chalet Suite",
+        "description": "1 king bed ∙ 1 fireplace ∙ 1 balcony"
+      },
+      {
+        "name": "Family Ski Lodge Room",
+        "description": "2 queen beds ∙ 1 bunk bed ∙ 1 kitchenette"
+      }
+    ],
+    "guide": {
+      "name": "Hans Schneider",
+      "avatar": "https://randomuser.me/api/portraits/men/22.jpg",
+      "description": "Experienced ski instructor and mountain guide with 15 years of local knowledge",
+      "rating": 4.8,
+      "reviewCount": 178
+    }
   },
   {
     "name": "Urban Oasis Hotel",
-    "location": "New York City",
+    "pricePerNight": 850,
     "description": "Modern luxury in the heart of Manhattan",
     "rating": 4.5,
     "images": [
       "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1174&q=80",
       "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-    ]
+    ],
+    "features": ["Ac", "wifi", "desk", "events"],
+    "about": "Urban Oasis Hotel is a sleek, modern haven in the bustling heart of Manhattan. Our prime location puts you steps away from iconic New York landmarks, world-class shopping, and diverse dining options. The hotel features a rooftop bar with stunning city views, a state-of-the-art fitness center, and elegantly designed rooms that serve as a peaceful retreat from the city that never sleeps.",
+    "rates": [
+      {
+        "name": "Emily Chen",
+        "date": "2023-05-01",
+        "avatar": "https://randomuser.me/api/portraits/women/5.jpg",
+        "rating": 4.7,
+        "review": "Excellent location and beautiful, modern rooms. The rooftop bar was a highlight!"
+      },
+      {
+        "name": "David Wilson",
+        "date": "2023-04-18",
+        "avatar": "https://randomuser.me/api/portraits/men/6.jpg",
+        "rating": 4.3,
+        "review": "Great hotel overall. Slightly noisy due to central location, but that's expected in NYC."
+      }
+    ],
+    "location": {
+      "latitude": 40.7128,
+      "longitude": -74.0060
+    },
+    "rooms": [
+      {
+        "name": "Manhattan Skyline Suite",
+        "description": "1 king bed ∙ 1 sofa bed ∙ 1 city view"
+      },
+      {
+        "name": "Executive Business Room",
+        "description": "1 queen bed ∙ 1 work desk ∙ 1 ergonomic chair"
+      }
+    ],
+    "guide": {
+      "name": "Alex Thompson",
+      "avatar": "https://randomuser.me/api/portraits/men/24.jpg",
+      "description": "Native New Yorker with extensive knowledge of the city's hidden gems",
+      "rating": 4.7,
+      "reviewCount": 156
+    }
   },
   {
     "name": "Serengeti Safari Camp",
-    "location": "Tanzania",
+    "pricePerNight": 850,
     "description": "Authentic safari experience with luxury tented accommodations",
     "rating": 4.9,
     "images": [
       "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1168&q=80"
-    ]
+    ],
+    "features": ["camera", "firstAid", "planeTakeOff"],
+    "about": "Serengeti Safari Camp offers an unparalleled wildlife experience in the heart of Tanzania's Serengeti National Park. Our luxury tented accommodations provide comfort without compromising on authenticity. Guests can enjoy daily game drives led by expert guides, witness the Great Migration, and fall asleep to the sounds of the African wilderness. Our camp is committed to conservation and supporting local communities.",
+    "rates": [
+      {
+        "name": "Robert Taylor",
+        "date": "2023-04-05",
+        "avatar": "https://randomuser.me/api/portraits/men/7.jpg",
+        "rating": 5,
+        "review": "Once-in-a-lifetime experience! Saw all of the Big Five and the staff was exceptional."
+      },
+      {
+        "name": "Lisa Anderson",
+        "date": "2023-03-22",
+        "avatar": "https://randomuser.me/api/portraits/women/8.jpg",
+        "rating": 4.8,
+        "review": "Amazing safari experience. The tented camps were surprisingly comfortable and well-appointed."
+      }
+    ],
+    "location": {
+      "latitude": -2.3333,
+      "longitude": 34.8333
+    },
+    "rooms": [
+      {
+        "name": "Luxury Safari Tent",
+        "description": "1 king bed ∙ 1 outdoor shower ∙ 1 private deck"
+      },
+      {
+        "name": "Family Safari Suite",
+        "description": "2 queen beds ∙ 1 living area ∙ 1 viewing platform"
+      }
+    ],
+    "guide": {
+      "name": "Jabari Kimathi",
+      "avatar": "https://randomuser.me/api/portraits/men/26.jpg",
+      "description": "Expert wildlife guide with over 20 years of experience in the Serengeti",
+      "rating": 4.9,
+      "reviewCount": 312
+    }
   },
   {
     "name": "Cherry Blossom Inn",
-    "location": "Kyoto, Japan",
+    "pricePerNight": 850,
     "description": "Traditional ryokan with beautiful gardens and hot springs",
     "rating": 4.7,
     "images": [
       "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "https://images.unsplash.com/photo-1526491109672-74740652b963?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-    ]
-  },
-  {
-    "name": "Coastal Breeze Resort",
-    "location": "Amalfi Coast, Italy",
-    "description": "Cliffside hotel with stunning Mediterranean views",
-    "rating": 4.6,
-    "images": [
-      "https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1535827841776-24afc1e255ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1175&q=80"
-    ]
-  },
-  {
-    "name": "Outback Wilderness Lodge",
-    "location": "Australian Outback",
-    "description": "Unique eco-friendly accommodations in the heart of the desert",
-    "rating": 4.4,
-    "images": [
-      "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-      "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1610981755415-3f7c9202cccb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-    ]
-  },
-  {
-    "name": "Northern Lights Inn",
-    "location": "Reykjavik, Iceland",
-    "description": "Prime location for viewing the aurora borealis",
-    "rating": 4.5,
-    "images": [
-      "https://images.unsplash.com/photo-1579033461380-adb47c3eb938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1164&q=80",
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-    ]
-  },
-  {
-    "name": "Tropical Paradise Resort",
-    "location": "Bora Bora",
-    "description": "Exclusive island getaway with private beaches",
-    "rating": 4.9,
-    "images": [
-      "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1501426026826-31c667bdf23d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1036&q=80",
-      "https://images.unsplash.com/photo-1439066615861-d1af74d74000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80"
-    ]
-  },
-  {
-    "name": "Historic Grand Hotel",
-    "location": "Vienna, Austria",
-    "description": "Opulent 19th-century hotel with classical music concerts",
-    "rating": 4.7,
-    "images": [
-      "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80",
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-    ]
+    ],
+    "features": ["Ac", "door", "wifi"],
+    "about": "Cherry Blossom Inn is a traditional Japanese ryokan located in the historic city of Kyoto. Our inn offers a serene escape with its beautiful Japanese gardens, natural hot springs, and authentic tatami rooms. Guests can experience traditional Japanese hospitality, enjoy kaiseki cuisine, and explore nearby temples and shrines. During spring, our inn offers breathtaking views of cherry blossoms in full bloom.",
+    "rates": [
+      {
+        "name": "Thomas Lee",
+        "date": "2023-04-12",
+        "avatar": "https://randomuser.me/api/portraits/men/9.jpg",
+        "rating": 4.9,
+        "review": "Authentic Japanese experience. The hot springs and garden were incredibly relaxing."
+      },
+      {
+        "name": "Maria Garcia",
+        "date": "2023-03-30",
+        "avatar": "https://randomuser.me/api/portraits/women/10.jpg",
+        "rating": 4.6,
+        "review": "Beautiful ryokan with excellent service. The kaiseki dinner was a culinary delight."
+      }
+    ],
+    "location": {
+      "latitude": 35.0116,
+      "longitude": 135.7681
+    },
+   "rooms": [
+      {
+        "name": "Luxury Safari Tent",
+        "description": "1 king bed ∙ 1 outdoor shower ∙ 1 private deck"
+      },
+      {
+        "name": "Family Safari Suite",
+        "description": "2 queen beds ∙ 1 living area ∙ 1 viewing platform"
+      }
+    ],
+    "guide": {
+      "name": "Jabari Kimathi",
+      "avatar": "https://randomuser.me/api/portraits/men/26.jpg",
+      "description": "Expert wildlife guide with over 20 years of experience in the Serengeti",
+      "rating": 4.9,
+      "reviewCount": 312
+    }
   }
 ]
-

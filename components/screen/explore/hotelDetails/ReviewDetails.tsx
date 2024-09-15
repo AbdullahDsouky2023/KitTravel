@@ -4,15 +4,25 @@ import ReviewCard from './ReviewCard'
 import AppText from '@/components/AppText'
 import { RFValue } from 'react-native-responsive-fontsize'
 import tw from 'twrnc'
-type Props = {}
+type Props = {
+  review: {
+    name: string,
+    date: string,
+    avatar: string,
+    review: string
+  }
+}
 
-const ReviewDetails = (props: Props) => {
+const ReviewDetails = ({ review }: Props) => {
+  console.log(review)
   return (
-    <View>
-   <ReviewCard />
-            <AppText style={tw`text-[${RFValue(14)}px] mt-1`}>
-            Great place for a getaway from the city. If you look at the map technically this place is surrounded by houses, restaurants, etc but there’s a small jungle-like.
-            </AppText>
+    <View style={tw`my-2 bg-gray-100 rounded-xl px-4 py-2`}>
+      <ReviewCard
+        review={review}
+      />
+      <AppText style={tw`text-[${RFValue(14)}px] mt-1`}>
+        {review.review}
+      </AppText>
     </View>
   )
 }

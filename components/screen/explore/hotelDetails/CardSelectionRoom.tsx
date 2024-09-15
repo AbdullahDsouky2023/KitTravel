@@ -6,13 +6,14 @@ import { RFValue } from 'react-native-responsive-fontsize'
 import { Colors } from '@/constants/Colors'
 import AppText from '@/components/AppText'
 import Animated, { useSharedValue } from 'react-native-reanimated'
-
+import { Room } from '@/types/hotel'
 type Props = {
     onPress: () => void,
-    active: boolean
+    active: boolean,
+    room: Room
 }
 
-const CardSelectionRoom = ({onPress, active}: Props) => {
+const CardSelectionRoom = ({onPress, active, room}: Props) => {
     const scale = useSharedValue(1)
 
     const animated = useMemo(() => {
@@ -33,17 +34,14 @@ const CardSelectionRoom = ({onPress, active}: Props) => {
     style={[tw`${active ? 'border-[5px] border-blue-700' : ''} w-[200px] h-[200px] rounded-xl`, animated]}
     />
     <View style={tw`flex gap-1`}>
-       <Text style={[tw`text-black text-[${RFValue(20)}px] font-bold`, Colors.FontStyleMain]}>
-           Deluxe Room
+       <Text style={[tw`text-black text-[${RFValue(14)}px] font-bold max-w-[${RFValue(180)}px]`, Colors.FontStyleMain]}>
+           {room.name}
        </Text>
-       <AppText style={tw`text-slate-400 text-[${RFValue(14)}px] font-bold`}>
-           Tone-bedroom villa ,
+       <AppText style={tw`text-slate-400 text-[${RFValue(14)}px] font-bold max-w-[${RFValue(150)}px]`}>
+           {room.description}
            
        </AppText>
-       <AppText style={tw`text-slate-400 text-[${RFValue(14)}px] font-bold`}>
-           Tone-bedroom villa ,
-           
-       </AppText>
+      
     </View>
    </Pressable>
   )

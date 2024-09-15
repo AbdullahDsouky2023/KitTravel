@@ -2,12 +2,22 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import GuideAvatarContainer from './GuideAvatarContainer'
 
-type Props = {}
+type Props = {
+  review: {
+    name: string,
+    date: string,
+    avatar: string
+  }
+}
 
-const ReviewCard = (props: Props) => {
+const ReviewCard = ({review}: Props) => {
   return (
     <View>
-      <GuideAvatarContainer/>
+      <GuideAvatarContainer
+      userName={review?.name}
+      userRole={review?.date}
+      userImage={review?.avatar}
+      />
     </View>
   )
 }

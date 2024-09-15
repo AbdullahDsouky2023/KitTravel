@@ -4,9 +4,9 @@ import { create } from 'zustand'
 import { persist, createJSONStorage, PersistOptions } from 'zustand/middleware'
 
 interface HotelsStore {
-    hotels: Hotel[];
-    setHotel: (hotel: Hotel) => void;
-    deleteHotel: (hotel: Hotel) => void;
+    hotels: string[];
+        setHotel: (hotel_id: string) => void;
+    deleteHotel: (hotel_id: string) => void;
 }
 
 type HotelsStorePersist = HotelsStore & {
@@ -23,11 +23,11 @@ export const useHotelsStore = create<HotelsStorePersist>()(
     persist(
         (set) => ({
             hotels: [],
-            setHotel: (hotel: Hotel) => {
-                set((state: HotelsStore) => ({ hotels: [...state.hotels, hotel] }))
+            setHotel: (hotel_id: string) => {
+                set((state: HotelsStore) => ({ hotels: [...state.hotels, hotel_id] }))
             },
-            deleteHotel: (hotel: Hotel) => {
-                set((state: HotelsStore) => ({ hotels: state.hotels.filter((h) => h._id !== hotel._id) }))
+            deleteHotel: (hotel_id: string) => {
+                set((state: HotelsStore) => ({ hotels: state.hotels.filter((h) => h !== hotel_id) }))
             },
             _hasHydrated: false,
             setHasHydrated: (state) => set({ _hasHydrated: state }),

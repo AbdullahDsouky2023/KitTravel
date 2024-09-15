@@ -6,22 +6,29 @@ import { RFValue } from 'react-native-responsive-fontsize'
 import { Colors } from '@/constants/Colors'
 import AppText from '@/components/AppText'
 import CardSelectionRoom from './CardSelectionRoom'
-type Props = {}
+import { Room } from '@/types/hotel'
+import { useBookingStore } from '@/store/booking/BookingStore'
+type Props = {
+  rooms: Room[]
+}
 
-const RoomSelection = (props: Props) => {
+const RoomSelection = ({rooms}: Props) => {
     const [active, setActive] = useState(0)
+    const {setRoom} = useBookingStore()
   return (
     <View style={tw`flex my-4 gap-2 h-[350px] `}>
         <FlatList
-        data={[1,2,3,4,5,6]}
+        data={rooms}
         horizontal
         showsHorizontalScrollIndicator={false}
-        renderItem={({item}) => (
+        renderItem={({item , index}) => (
             <CardSelectionRoom 
             onPress={() => {
-                setActive(item)
+                  setActive(index)
+                  setRoom({description: item.description, name: item.name})
             }}
-            active={active === item}
+            room={item}
+            active={active === index}
             />
         )}
         />

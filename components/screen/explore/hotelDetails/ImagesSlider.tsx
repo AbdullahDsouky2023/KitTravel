@@ -8,7 +8,7 @@ const INDICATOR_WIDTH = 70;
 const INDICATOR_MARGIN = 5;
 
 type ImageSliderProps = {
-  images: any[];
+  images: string[];
 };
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
@@ -19,7 +19,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
 
   const renderItem = ({ item }: { item: any }) => (
     <Image
-      source={item}
+      source={
+        {uri:item}
+      }
       style={tw`w-[${ITEM_WIDTH}px] h-[380px] rounded-[20px]`}
       resizeMode="cover"
     />

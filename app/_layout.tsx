@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler';
+
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { router, Stack } from 'expo-router';
@@ -7,7 +9,7 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { loadToken } from '@/utils/auth';
-
+import { Toaster } from 'sonner-native';
 
 // import { loadToken } from '@/utils/storage';
 SplashScreen.preventAutoHideAsync();
@@ -55,7 +57,9 @@ export default function RootLayout() {
         <Stack.Screen name="exploreMoreScreen" options={{ headerShown: false }} />
         <Stack.Screen name="hotel" options={{ headerShown: false ,presentation:'fullScreenModal'}} />
         <Stack.Screen name="booking" options={{ headerShown: false ,presentation:'containedModal'}} />
+
       </Stack>
+      <Toaster/>
     </ThemeProvider>
   );
 }

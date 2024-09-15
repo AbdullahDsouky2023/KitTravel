@@ -6,23 +6,27 @@ import { RFValue } from 'react-native-responsive-fontsize'
 import GuideAvatarContainer from './GuideAvatarContainer'
 import RatingCircles from './RatingCircles'
 import Button from '@/components/onboarding/Button'
-type Props = {}
+import { guide } from '@/types/hotel'
+type Props = {
+    guide: guide
+}
 
-const GuideDetails = (props: Props) => {
+const GuideDetails = ({
+    guide
+}: Props) => {
+    console.log('mett d' ,guide)
+        if(!guide) return null
     return (
         <View style={tw`px-4 `}>
             <AppText style={tw`text-black text-[${RFValue(20)}px] font-bold`}>Meet your Guide</AppText>
-            <GuideAvatarContainer />
+            <GuideAvatarContainer userName={guide.name} userRole={''} userImage={guide.avatar} />
             <View style={tw`flex-row items-center mt-2`}>
-                <RatingCircles rating={4.4} />
-                <AppText style={tw`ml-2 text-blue-500 font-bold`}>4.4 (889 Reviews)</AppText>
+                <RatingCircles rating={guide.rating} />
+                <AppText style={tw`ml-2 text-blue-500 font-bold`}>{guide.rating} ({guide.reviewCount} Reviews)</AppText>
             </View>
             <AppText style={tw`my-4 text-[${RFValue(14)}px]`}>
-                Hi, my name is Ron.
+                {guide.description}
 
-                I am a local guide, living in the famous place to visit, Bali. We have one of the amazing beach, forest, mount.
-
-                Come and I'll show you a best staycation on Bali.
 
             </AppText>
             <Button

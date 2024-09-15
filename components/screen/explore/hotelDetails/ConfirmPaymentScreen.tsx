@@ -12,9 +12,15 @@ import Button from '@/components/onboarding/Button'
 import { Colors } from '@/constants/Colors'
 import { AntDesign } from '@expo/vector-icons'
 import FloatingPricing from './FloatingPricing'
+import { useBookingStore } from '@/store/booking/BookingStore'
+import { router } from 'expo-router'
+import Hotel from '@/types/hotel'
+ import { toast } from 'sonner-native';
+
 type Props = {}
 
 const ConfirmPaymentScreen = (props: Props) => {
+  const {hotel} = useBookingStore()
   return (
     <SafeAreaView style={tw`flex-1 bg-white`}>
       <BackHeader 
@@ -22,7 +28,7 @@ const ConfirmPaymentScreen = (props: Props) => {
       />
       <Line/>
     <ScrollView showsVerticalScrollIndicator={false} style={tw`flex-1 mb-[${RFValue(100)}px]`} >
-      <SelectedRoomDetails/>
+      <SelectedRoomDetails />
       <Line/>
       <PeopeDetails/>
       <Line/>
@@ -33,6 +39,8 @@ const ConfirmPaymentScreen = (props: Props) => {
     <FloatingPricing
     confirm={true}
     pay={false}
+    hotel={hotel as Hotel}
+    price={hotel?.pricePerNight || 0}
     />
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -41,7 +49,10 @@ const ConfirmPaymentScreen = (props: Props) => {
 
 export default ConfirmPaymentScreen
 
+
 const SelectedRoomDetails = () => {
+  const { selectedRoom } = useBookingStore()
+  console.log(selectedRoom)
   return (
     <View style={tw`px-4 flex-row gap-4 my-4`}>
     <Image
@@ -50,13 +61,12 @@ const SelectedRoomDetails = () => {
     />
     <View style={tw`flex-1 gap-1`}>
       <AppText style={tw`text-[${RFValue(14)}px] font-bold `}>
-      Saza Villa ∙ Home 1     
+      {selectedRoom?.name} 
            </AppText>
       <AppText style={tw`text-[${RFValue(10)}px] text-gray-400 font-bold`}>
-      1 king bed ∙ 1 couch
+      {selectedRoom?.description}
       </AppText>
       <AppText style={tw`text-[${RFValue(10)}px] text-gray-400 font-bold`}>
-      2 suite bathroom ∙ private pool
       </AppText>
     </View>
   </View>
@@ -64,6 +74,13 @@ const SelectedRoomDetails = () => {
 }
 
 const PeopeDetails = () => {
+  const {checkInDate, checkOutDate,hotel} = useBookingStore()
+
+  const formatDate = (date: Date | null) => {
+    if (!date) return '';
+    return date.getDate() + ' ' + date.toLocaleString('en-US', { month: 'long' });
+  }
+
   return (
     <View style={tw` px-4`}>
     <AppText style={tw`text-[${RFValue(18)}px] font-bold`}>
@@ -75,12 +92,22 @@ const PeopeDetails = () => {
       <AppText style={tw`text-[${RFValue(15)}px] font-bold`}>
       Dates
       </AppText>
-      <AppText style={tw`text-[${RFValue(13)}px] text-gray-400 font-bold`}>
-      11 June - 27 June
+      <AppText style={tw`text-[${RFValue(12)}px] text-gray-400 font-bold`}>
+        {formatDate(checkInDate)} - {formatDate(checkOutDate)}
       </AppText>
       </View>
       <Button
       title="Edit Dates"
+      onPress={() => {
+        router.push({
+            pathname: '/hotel/details/avaiablity',
+            params: {
+              price:hotel?.pricePerNight,
+              hotel: hotel?._id
+            }
+          })}}
+
+      
       style={tw`border border-[${Colors.Black100}]  max-w-[${RFValue(100)}px] h-[${RFValue(30)}px] rounded-lg px-1 py-1`}
       />
     </View>
@@ -94,6 +121,9 @@ const PeopeDetails = () => {
       </View>
       <Button
       title="Edit Guests"
+      onPress={() => {
+        toast('Hello, World!')        // router.navigate('/hotel/details/guests')
+      }}
       style={tw`border border-[${Colors.Black100}]  max-w-[${RFValue(100)}px] h-[${RFValue(30)}px] rounded-lg px-1 py-1`}
       />
     </View>
@@ -102,19 +132,24 @@ const PeopeDetails = () => {
 }
 
 const PriceDetails = () => {
-return (
-  <View style={tw`px-4`}>
-    <AppText style={tw`text-[${RFValue(18)}px] font-bold`}>
+  const { totalPrice, checkInDate, checkOutDate, selectedRoom, serviceFee } = useBookingStore();
+  const numberOfNights = checkInDate && checkOutDate
+    ? Math.ceil((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24))
+    : 0;
+
+  return (
+    <View style={tw`px-4`}>
+      <AppText style={tw`text-[${RFValue(18)}px] font-bold`}>
     Price Details
     </AppText>
     <View style={tw`flex gap-4 justify-between my-4`}>
       <View style={tw`flex-row gap-2 w-full justify-between`}>
 
-        <AppText style={tw`text-[${RFValue(15)}px] text-gray-400 font-bold`}>
-        Home 1 x 10 nights   
+        <AppText style={tw`text-[${RFValue(15)}px] text-gray-400 font-bold max-w-[${RFValue(170)}px]`}>
+        {selectedRoom?.name} x {numberOfNights} nights   
            </AppText>
       <AppText style={tw`text-[${RFValue(15)}px] font-bold`}>
-        $1,200
+        {totalPrice} USD
       </AppText>
       </View> 
       <View style={tw`flex-row gap-2 w-full justify-between`}>
@@ -123,7 +158,7 @@ return (
        Service Fee
            </AppText>
       <AppText style={tw`text-[${RFValue(15)}px] font-bold`}>
-        $120
+        {serviceFee} USD
       </AppText>
       </View> 
       <View style={tw`flex-row gap-2 w-full justify-between`}>
@@ -132,7 +167,7 @@ return (
         Total
       </AppText>
       <AppText style={tw`text-[${RFValue(15)}px] font-bold`}>
-        $1,320
+        {totalPrice} USD
       </AppText>
       </View> 
     </View>

@@ -2,7 +2,7 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
+import { BlurHeaderStyle, Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { explore, home, love, ticket, user } from '@/assets';
 import { RFPercentage } from 'react-native-responsive-fontsize';
@@ -32,8 +32,8 @@ export default function TabLayout() {
     />
     <Tabs.Screen
       name="wishlist"
+  
       options={{
-        title: 'Wishlist',
         tabBarLabelStyle:styles.labelStyles,
         tabBarActiveTintColor: Colors.Black100,
         tabBarInactiveTintColor: Colors.Black70,

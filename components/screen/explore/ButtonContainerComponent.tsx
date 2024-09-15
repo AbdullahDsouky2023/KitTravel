@@ -40,6 +40,7 @@ const ButtonContainerComponent = (props: Props) => {
      title='Explore Now'
      style={tw`w-50 rounded-full`}
      styleText={tw`text-lg`}
+     onPress={() => router.navigate('/exploreMoreScreen')}
      />
      </View>
     </>

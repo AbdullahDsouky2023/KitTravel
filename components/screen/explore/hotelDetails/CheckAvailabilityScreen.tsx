@@ -6,9 +6,11 @@ import { RFValue } from 'react-native-responsive-fontsize'
 import Line from './Line'
 import FloatingPricing from './FloatingPricing'
 import CalendarComponent from './CalenderComponent'
+import { useLocalSearchParams } from 'expo-router'
 type Props = {}
 
 const CheckAvailabilityScreen = (props: Props) => {
+    const {price} = useLocalSearchParams()
     return (
         <View style={tw`flex-1 bg-white relative  `} >
 
@@ -17,7 +19,7 @@ const CheckAvailabilityScreen = (props: Props) => {
                 <Line />
                 <CalendarComponent reservation={false} />
             </ScrollView>
-            <FloatingPricing  pay={true} confirm={false} />
+            <FloatingPricing  pay={true} confirm={false} price={Number(price)} />
         </View>
     )
 }

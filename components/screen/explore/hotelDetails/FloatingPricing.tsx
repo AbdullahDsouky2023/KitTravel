@@ -4,23 +4,34 @@ import { Colors } from '@/constants/Colors'
 import { RFValue } from 'react-native-responsive-fontsize'
 import tw from 'twrnc'
 import { router } from 'expo-router'
+import Hotel from '@/types/hotel'
+import { useBookingStore } from '@/store/booking/BookingStore'
 
 type Props = {
   pay: boolean
   confirm: boolean
   date?: string
+  price:number
+    hotel:Hotel
 }
 
 const FloatingPricing = (props: Props) => {
-      const {pay, confirm, date} = props
-  
+      const {pay, confirm, date,price,hotel} = props
+    const {setHotel} = useBookingStore()
   const handlePress = () => {
     if (pay) {
       router.push('/hotel/details/payment')
     } else if (confirm) {
       router.push('/hotel/details/successPayment')
     } else {
-      router.push('/hotel/details/avaiablity')
+      setHotel(hotel)
+      router.push({
+        pathname: '/hotel/details/avaiablity',
+        params: {
+          price: price.toString(),
+          hotel: hotel?._id
+        }
+      })
     }
   }
 
@@ -47,7 +58,7 @@ const FloatingPricing = (props: Props) => {
           ) : (
             <>
             <Text style={[tw`text-[${RFValue(16)}px] font-bold`, Colors.FontStyleMain]}>
-           $80
+          ${price}
                 </Text>
          <Text style={[tw`text-[${RFValue(14)}px] font-bold text-slate-400`, Colors.FontStyleMain]}>
            / night

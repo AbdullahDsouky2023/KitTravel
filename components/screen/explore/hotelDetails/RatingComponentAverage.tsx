@@ -29,9 +29,9 @@ const RatingComponentAverage = ({
 
   return (
     <View style={tw`flex flex-row items-center gap-4 bg-gray-200 rounded-full`}>
-    <Animated.View style={[tw`bg-[${Colors.Black100}] px-2 py-1 rounded-full `, animatedStyles]}>
+    <Animated.View style={[tw`bg-[${Colors.Black100}] px-2 py-1 rounded-full min-w-[30] `, animatedStyles]}>
 
-    <AppText style={tw`text-[${RFValue(13)}px] px-4 text-[${Colors.white}] bg-[${Colors.Black100}]
+    <AppText style={tw`text-[${RFValue(13)}px] px-4 text-[${Colors.white}]  bg-[${Colors.Black100}]
     `}>
         {title}
     </AppText>

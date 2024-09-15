@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { View, TouchableOpacity, Image, FlatList, Dimensions, Animated, Text, ScrollView, Pressable } from 'react-native';
+import { View, TouchableOpacity, Image, FlatList, Dimensions, Animated, Text, Pressable } from 'react-native';
 import tw from 'twrnc';
 import { ChevronLeft } from '@/assets/images/svgs/Icon';
 import Icon from '@/components/Icons';
@@ -25,31 +25,25 @@ import ReviewCard from './ReviewCard';
 import ReviewContainer from './ReviewContainer';
 import FloatingPricing from './FloatingPricing';
 import Hotel from '@/types/hotel';
+import AddToWhishlistButtonComponent from './AddToWhishlistButtonComponent';
+import { ScrollView } from 'react-native-virtualized-view';
 
 const { width } = Dimensions.get('window');
 
 
 type Props = {
-hotel:Hotel
+  hotel: Hotel
 };
 
-const ICON_SIZE = 40;
-const ICON_COLOR = '#FFFFFF';
 
 
 
 const HotelDetailsScreenComponent: React.FC<Props> = ({
   hotel
 }) => {
-
-
   const handleGoBack = () => {
     router.back();
   };
-
-
-
-
 
   return (
     <View style={tw`flex-1 bg-white relative  `} >
@@ -64,25 +58,28 @@ const HotelDetailsScreenComponent: React.FC<Props> = ({
         <View style={tw`absolute top-0 left-0 right-0 h-[350px]`}>
           <View style={tw`absolute top-10 px-4 mt-4 z-10 bg-transparent flex flex-row w-full justify-between`}>
             <Entypo name="chevron-left" size={RFValue(28)} onPress={handleGoBack} color={Colors.white} />
-            <View style={tw`flex flex-row gap-4`}>
+            <View style={tw`flex flex-row gap-4  `}>
               <EvilIcons name="share-google" size={RFValue(30)} color={Colors.white} />
-              <AntDesign name="hearto" size={RFValue(25)} color={Colors.white} />
+              <View style={tw`absolute right-10 top-[-${RFValue(10)}px]`}>
+
+                <AddToWhishlistButtonComponent _id={hotel._id} />
+              </View>
             </View>
           </View>
         </View>
-        <HotelDetails />
+        <HotelDetails hotel={hotel} />
         <Line />
-        <HotelFeatures />
+        <HotelFeatures features={hotel.features} />
         <Line />
         <AppText style={tw`my-1 px-4 text-black text-[${RFValue(20)}px] font-bold`}>
           Where you’ll live?
         </AppText>
-        <RoomSelection />
+        <RoomSelection  rooms={hotel.rooms}/>
         <Line />
         <Text style={[tw`my-4 px-4 text-black text-[${RFValue(20)}px] font-bold`, Colors.FontStyleMain]}>
           What this place offers
         </Text>
-        <HotelFeatures />
+        <HotelFeatures features={hotel.features} />
         <Line />
         <View style={tw`flex flex justify-between px-4`}>
           <AppText style={tw`my-1 px-4 text-black text-[${RFValue(20)}px] font-bold`}>
@@ -98,12 +95,12 @@ const HotelDetailsScreenComponent: React.FC<Props> = ({
 
         <HotelList containerStyle={tw`my-8`} />
         <Line />
-        <GuideDetails />
+        <GuideDetails guide={hotel.guide} />
         <Line />
-        <ReviewContainer />
+        <ReviewContainer reviews={hotel.rates} />
         <Line />
       </ScrollView>
-      <FloatingPricing />
+      <FloatingPricing price={hotel.pricePerNight} pay={false} confirm={false} hotel={hotel} />
     </View>
   );
 };

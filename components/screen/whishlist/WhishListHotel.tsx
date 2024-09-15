@@ -6,17 +6,28 @@ import Hotel from '@/types/hotel'
 import { getAllHotels } from '@/utils/HotelsApi'
 import Card from '@/components/screen/explore/HotelList/Card'
 import { useHotelsStore } from '@/store/hotels/HotelsStore'
+import { shallow } from 'zustand/shallow'
 type Props = {
   horizontal?:boolean
 }
 
 const WhishListHotelComponet = ({horizontal}: Props) => {
-  const hotels = useHotelsStore((state) => state.hotels)
+  const hotelsIds = useHotelsStore((state) => state.hotels, shallow)
+  const [AllHotels, setAllHotels] = useState<Hotel[]>([])
+  useEffect(() => {
+    const fetchHotels = async () => {
+      const hotels = await getAllHotels()
+      const filteredHotels = hotels.filter((hotel) => hotelsIds.includes(hotel._id))
+      setAllHotels(filteredHotels)
+    }
+    fetchHotels()
+  }, [hotelsIds])
+  console.log(AllHotels)
   return (
- <View>
+ 
   <FlatList
    horizontal={horizontal}
-  data={hotels}
+  data={AllHotels}
   renderItem={({item}) => <Card
   hotel={item}
   />}
@@ -28,7 +39,6 @@ const WhishListHotelComponet = ({horizontal}: Props) => {
   showsHorizontalScrollIndicator={false}
   />
 
- </View>
   )
 }
 

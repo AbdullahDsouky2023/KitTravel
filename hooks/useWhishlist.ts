@@ -8,7 +8,7 @@ type Props = {
 
 const useWhishlist = (_id: string) => {
     const { hotels } = useHotelsStore();
-    const isWhishlist = hotels.some((hotel) => hotel._id === _id);
+    const isWhishlist = hotels.some((hotel) => hotel === _id);
     return isWhishlist;
 
 }

@@ -8,16 +8,19 @@ type Props = {
     image: any
     title: string
     description: string
-}
+    isAvailable: boolean
+  }
 
 const FeatureItems = ({
     image,
     title,
-    description
+    description,
+    isAvailable
 }: Props) => {
+  if(!isAvailable) return null
   return (
-    <View style={tw`flex-1 bg-white flex flex-row gap-4 justify-center items-center`}>
-    <Image source={image} style={tw`w-[${RFValue(20)}px] h-[${RFValue(20)}px]`} />    
+    <View style={tw`flex-1 bg-white mb-4 flex flex-row gap-4 justify-center items-center`}>
+      <Image source={image} style={tw`w-[${RFValue(20)}px] h-[${RFValue(20)}px]`} />    
     <View style={tw`flex-1 gap-2`}>
         <Text style={[tw`text-black text-[${RFValue(14)}px] `,Colors.FontStyleMain]}>
           {title}
