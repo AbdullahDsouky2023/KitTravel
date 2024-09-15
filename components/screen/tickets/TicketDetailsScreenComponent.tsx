@@ -82,7 +82,8 @@ const TicketContent = ({ ticket }: { ticket: bookingCard }) => {
                 <View style={tw`flex justify-start  mr-2  my-4  gap-1`}>
 
                     <AppText style={tw`text-center text-[${RFValue(13)}px] text-gray-400 font-bold`}>
-                        Order No. {ticket.bookingNumber}                        </AppText>
+                        Order No. {ticket.bookingNumber}                      
+                          </AppText>
                     <Image
                         source={Barcode}
                         style={tw`w-50 h-[${RFValue(30)}px] self-center my-1 `}
