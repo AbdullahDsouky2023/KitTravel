@@ -6,7 +6,7 @@ import { RFValue } from 'react-native-responsive-fontsize'
 import Line from './Line'
 import FloatingPricing from './FloatingPricing'
 import CalendarComponent from './CalenderComponent'
-import { useLocalSearchParams } from 'expo-router'
+import { router, useLocalSearchParams } from 'expo-router'
 type Props = {}
 
 const CheckAvailabilityScreen = (props: Props) => {
@@ -19,7 +19,16 @@ const CheckAvailabilityScreen = (props: Props) => {
                 <Line />
                 <CalendarComponent reservation={false} />
             </ScrollView>
-            <FloatingPricing  pay={false} confirm={false} price={Number(price)} selectGuests={true} />
+            <FloatingPricing 
+              confirm={false} 
+              price={Number(price)} 
+              
+              selectGuests={true} 
+              title='Confirm'
+              onPress={() => {
+                router.navigate('/hotel/details/guests')
+            }}
+            />
         </View>
     )
 }

@@ -15,12 +15,12 @@ import FloatingPricing from './FloatingPricing'
 import { useBookingStore } from '@/store/booking/BookingStore'
 import { router } from 'expo-router'
 import Hotel from '@/types/hotel'
- import { toast } from 'sonner-native';
+ import { toast, Toaster } from 'sonner-native';
 
 type Props = {}
 
 const ConfirmPaymentScreen = (props: Props) => {
-  const {hotel} = useBookingStore()
+  const {hotel,saveBooking,totalPrice} = useBookingStore()
   return (
     <SafeAreaView style={tw`flex-1 bg-white`}>
       <BackHeader 
@@ -37,17 +37,29 @@ const ConfirmPaymentScreen = (props: Props) => {
       <PaymentMethod/>
     </ScrollView>
     <FloatingPricing
-    selectGuests={false}
     confirm={true}
-    pay={false}
-    hotel={hotel as Hotel}
-    price={hotel?.pricePerNight || 0}
+    selectGuests={false}
+    price={totalPrice}
+    title='Book Now'
     onPress={() => {
-      router.navigate('/hotel/details/payment')
-      toast.success('Payment Method Selected Successfully')
+      // toast.success('Payment Method Selected Successfully')
+      
+      toast.loading('Processing Payment', {
+        duration: 5000,
+        closeButton: false,
+        invert: false,
+        important: true,
+      })
+      setTimeout(() => {
+        toast.success('Payment Successful')
+        router.replace('/hotel/details/successPayment')
+      }, 5000)
+      saveBooking()
+      
     }}
     />
       <StatusBar style="auto" />
+   
     </SafeAreaView>
   )
 }

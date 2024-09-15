@@ -100,7 +100,22 @@ const HotelDetailsScreenComponent: React.FC<Props> = ({
         <ReviewContainer reviews={hotel.rates} />
         <Line />
       </ScrollView>
-      <FloatingPricing price={hotel.pricePerNight} pay={false} confirm={false} hotel={hotel} />
+      <FloatingPricing price={hotel.pricePerNight}
+      selectGuests={true}
+      title='Check Availability'
+      onPress={
+        () => {
+          router.navigate(
+            {
+              pathname: '/hotel/details/avaiablity',
+              params: {
+                price: hotel.pricePerNight
+              }
+            }
+          )
+        }
+      }
+     confirm={false} hotel={hotel} />
     </View>
   );
 };

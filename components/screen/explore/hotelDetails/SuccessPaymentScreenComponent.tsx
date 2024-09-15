@@ -15,7 +15,7 @@ type Props = {}
 
 const SuccessPaymentScreenComponent = (props: Props) => {
     const navigation = useNavigation()
-    const {hotel,checkInDate,checkOutDate,numberOfGuests} = useBookingStore()
+    const {hotel,checkInDate,checkOutDate,numberOfGuests,clearBooking} = useBookingStore()
 
 
     return (
@@ -86,6 +86,7 @@ const SuccessPaymentScreenComponent = (props: Props) => {
                         router.navigate('/(tabs)/tickets')
                         router.dismissAll()
                         console.log('back to home', navigation.canGoBack())
+                        clearBooking()
                     }}
                     style={tw`w-90 self-center border border-black`}
                 />

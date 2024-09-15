@@ -42,4 +42,17 @@ enum GuestType {
     CHILDREN = 'children',
     INFANTS = 'infants'
 }
-export { Room, guide, GuestType };
+interface bookingCard {
+    hotel: Hotel
+    checkInDate: string
+    checkOutDate: string
+    selectedRoom: Room
+    numberOfGuests: {
+        adults: number
+        children: number
+        infants: number
+    }
+    bookingNumber: string
+    
+}
+export { Room, guide, GuestType, bookingCard };

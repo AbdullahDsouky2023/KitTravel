@@ -23,6 +23,9 @@ const _layout = (props: Props) => {
          }} />
         <Stack.Screen name="details/successPayment" options={{ headerShown: false,
           presentation:'fullScreenModal'
+        }} />
+        <Stack.Screen name="details/ticketDetails" options={{ headerShown: false,
+          presentation:'fullScreenModal'
          }} />
     </Stack>
   )

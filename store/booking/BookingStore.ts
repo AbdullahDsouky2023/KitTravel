@@ -25,6 +25,9 @@ interface BookingState {
   calculateTotalPrice: () => void;
   calculateServiceFee: () => void;
   clearBooking: () => void;
+  saveBooking: () => void;
+  userBookings: any[];
+  getBookingsFromStorage: () => Promise<void>;
 }
 
 export const useBookingStore = create<BookingState>()(
@@ -41,7 +44,33 @@ export const useBookingStore = create<BookingState>()(
       },
       totalPrice: 0,
       serviceFee: 0,
+      userBookings: [],
       setHotel: (hotel) => set({ hotel }),
+      saveBooking: () => {
+        const currentState = get();
+        const newBooking = {
+          hotel: currentState.hotel,
+          checkInDate: currentState.checkInDate,
+          checkOutDate: currentState.checkOutDate,
+          selectedRoom: currentState.selectedRoom,
+          numberOfGuests: currentState.numberOfGuests,
+          totalPrice: currentState.totalPrice,
+          serviceFee: currentState.serviceFee,
+        };
+        const generateBookingNumber = () => {
+          return Math.floor(Math.random() * 1000000000000000).toString().padStart(15, '0');
+        };
+
+        const bookingWithNumber = {
+          ...newBooking,
+          bookingNumber: generateBookingNumber()
+        };
+
+        set((state) => ({
+          ...state,
+          userBookings: [...(state.userBookings || []), bookingWithNumber],
+        }));
+      },
 
       setDates: (checkIn, checkOut) => {
         set({ checkInDate: checkIn, checkOutDate: checkOut });
@@ -86,6 +115,12 @@ export const useBookingStore = create<BookingState>()(
         },
         totalPrice: 0
       }),
+      getBookingsFromStorage: async () => {
+        const bookings = await AsyncStorage.getItem('userBookings');
+        if (bookings) {
+          set({ userBookings: JSON.parse(bookings) });
+        }
+      },
     }),
     {
       name: 'booking-storage',
