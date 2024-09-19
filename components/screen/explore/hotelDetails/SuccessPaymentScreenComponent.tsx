@@ -85,7 +85,7 @@ const SuccessPaymentScreenComponent = (props: Props) => {
                         router.back()
                         router.navigate('/(tabs)/tickets')
                         router.dismissAll()
-                        console.log('back to home', navigation.canGoBack())
+                        //console.log('back to home', navigation.canGoBack())
                         clearBooking()
                     }}
                     style={tw`w-90 self-center border border-black`}

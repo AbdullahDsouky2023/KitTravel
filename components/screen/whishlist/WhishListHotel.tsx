@@ -25,7 +25,7 @@ const WhishListHotelComponet = ({ horizontal }: Props) => {
     }
     fetchHotels()
   }, [hotelsIds])
-  console.log(AllHotels)
+  //console.log(AllHotels)
   return (
     <View>
       <View style={tw`flex  px-4`}>

@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import { router } from 'expo-router';
 type responseType = {
   data:{
     token: string;
@@ -31,7 +32,7 @@ export const login = async (email, password) => {
 
 export const register = async (email, password) => {
   try {
-    const res:responseType = await axios.post('http://192.168.1.3:5000/api/users/register', { email, password });
+    const res:responseType = await axios.post('http://localhost:5000/api/users/register', { email, password });
     await setAuthToken(res.data.token);
     return res.data;
   } catch (error) {
@@ -41,6 +42,7 @@ export const register = async (email, password) => {
 
 export const logout = async () => {
   await setAuthToken();
+  router.push('/onboarding')
 };
 
 export const loadToken = async () => {

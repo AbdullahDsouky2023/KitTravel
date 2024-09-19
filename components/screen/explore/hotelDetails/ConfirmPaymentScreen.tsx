@@ -16,11 +16,12 @@ import { useBookingStore } from '@/store/booking/BookingStore'
 import { router } from 'expo-router'
 import Hotel from '@/types/hotel'
  import { toast, Toaster } from 'sonner-native';
+import ButtonComponent from '../ButtonComponent'
 
 type Props = {}
 
 const ConfirmPaymentScreen = (props: Props) => {
-  const {hotel,saveBooking,totalPrice} = useBookingStore()
+  const {saveBooking,totalPrice} = useBookingStore()
   return (
     <SafeAreaView style={tw`flex-1 bg-white`}>
       <BackHeader 
@@ -69,7 +70,6 @@ export default ConfirmPaymentScreen
 
 const SelectedRoomDetails = () => {
   const { selectedRoom } = useBookingStore()
-  console.log(selectedRoom)
   return (
     <View style={tw`px-4 flex-row gap-4 my-4`}>
     <Image
@@ -99,7 +99,6 @@ const PeopeDetails = () => {
   }
 
   const {numberOfGuests} = useBookingStore()
-  console.log(numberOfGuests)
   const {adults, children, infants} = numberOfGuests
   return (
     <View style={tw` px-4`}>
@@ -166,7 +165,6 @@ const PriceDetails = () => {
     </AppText>
     <View style={tw`flex gap-4 justify-between my-4`}>
       <View style={tw`flex-row gap-2 w-full justify-between`}>
-
         <AppText style={tw`text-[${RFValue(15)}px] text-gray-400 font-bold max-w-[${RFValue(170)}px]`}>
         {selectedRoom?.name} x {numberOfNights} nights   
            </AppText>

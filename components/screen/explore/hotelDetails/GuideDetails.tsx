@@ -14,7 +14,7 @@ type Props = {
 const GuideDetails = ({
     guide
 }: Props) => {
-    console.log('mett d' ,guide)
+    //console.log('mett d' ,guide)
         if(!guide) return null
     return (
         <View style={tw`px-4 `}>

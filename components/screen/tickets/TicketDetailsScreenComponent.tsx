@@ -31,7 +31,7 @@ const TicketDetailsScreenComponent = (props: Props) => {
                 <TicketContent ticket={ticket} />
             </ScrollView>
             <View style={tw`absolute  top-12 left-0 right-0`}>
-                <BackHeader title={ticket?.hotel.name} />
+                <BackHeader title={ticket?.hotel.name} white />
             </View>
         </>
     )

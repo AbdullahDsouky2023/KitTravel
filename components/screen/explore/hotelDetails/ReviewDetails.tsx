@@ -14,7 +14,7 @@ type Props = {
 }
 
 const ReviewDetails = ({ review }: Props) => {
-  console.log(review)
+  //console.log(review)
   return (
     <View style={tw`my-2 bg-gray-100 rounded-xl px-4 py-2`}>
       <ReviewCard

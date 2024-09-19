@@ -5,7 +5,7 @@ import tw from 'twrnc';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-
+import {toast} from 'sonner-native'
 
 import InputComponent from '../InputComponent';
 import Button from '../../onboarding/Button';
@@ -32,17 +32,20 @@ const LoginForm: React.FC = () => {
     const onSubmit = async (data: FormData) => {
         try {
           const response = await login(data.email, data.password);
-          console.log(response);
+          //console.log(response);
           if(response.token){
-          router.replace('/(tabs)/explore')
+          router.replace('/(tabs)')
           }else {
 
               Alert.alert('Error', response.message);
             }
           // Handle successful registration (e.g., show success message, navigate to login)
         } catch (error) {
-            Alert.alert('Error', error.response?.data.message);
-          console.error('Registration error:', error.response?.data || error?.message);
+            // Alert.alert('Error', error.response?.data.message);
+            toast.error(
+                    error?.response?.data?.msg
+            )
+        //   console.error('Registration error:', error.response?.data || error?.message);
           // Handle registration error (e.g., show error message)
         }
       };

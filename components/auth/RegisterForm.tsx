@@ -14,6 +14,7 @@ import { RFPercentage } from 'react-native-responsive-fontsize';
 import { Link } from 'expo-router';
 import { register } from '@/utils/auth';
 import { router } from 'expo-router';
+import { toast } from 'sonner-native';
 
 const { height , width  } = Dimensions.get('window');
 
@@ -37,14 +38,15 @@ const RegisterForm: React.FC = () => {
       try {
         const response = await register(data.email, data.password);
 
-        console.log(response);
+        //console.log(response);
         if(response.token){
         router.replace('/(tabs)')
         }
       
         // Handle successful registration (e.g., show success message, navigate to login)
       } catch (error) {
-        console.error('Registration error:', error.response?.data || error?.message);
+        // console.error('Registration error:',error);
+        toast.error(error?.msg)
         // Handle registration error (e.g., show error message)
       }
     };

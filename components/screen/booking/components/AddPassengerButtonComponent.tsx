@@ -23,8 +23,8 @@ const AddPassengerButtonComponent: React.FC<AddPassengerButtonProps> = (
 
     }
 ) => {
-    const [count, setCount] = useState(1)
     const {setGuests,numberOfGuests} = useBookingStore()
+        const [count, setCount] = useState(numberOfGuests[title as keyof typeof numberOfGuests] || 0)
     const handleIncreaseCount = (count: number) => {
         if (count < 10) {
             setCount(count + 1)
@@ -37,7 +37,7 @@ const AddPassengerButtonComponent: React.FC<AddPassengerButtonProps> = (
             setGuests({...numberOfGuests, [title]: count - 1})
         }
     }
-    console.log(numberOfGuests)
+    //console.log(numberOfGuests)
 
     return (
         <View style={tw`flex w-full bg-white p-4 gap-4 justify-between flex-row`}>
@@ -53,12 +53,11 @@ const AddPassengerButtonComponent: React.FC<AddPassengerButtonProps> = (
                 <Entypo name="chevron-left" size={RFValue(20)} color={count > 1 ? 'black' : 'gray'} onPress={() => {
                     handleDecreaseCount(count)
                 }} />
-                
                 <AnimatedRollingNumber
                     value={count}
-                    useGrouping
-                    enableCompactNotation
-                    textStyle={tw`text-[${RFValue(16)}px] relative  `}
+                    useGrouping={true}
+                    enableCompactNotation={true}
+                    textStyle={tw`text-[${RFValue(16)}px] relative`}
                     spinningAnimationConfig={{ duration: 500, easing: Easing.bounce }}
                 />
                 <Entypo name="chevron-right" size={RFValue(20)} color={count < 10 ? "black" : "gray"} onPress={() => {

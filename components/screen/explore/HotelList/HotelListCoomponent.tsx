@@ -13,7 +13,7 @@ const HotelListCoomponent = ({horizontal}: Props) => {
   const [hotels, setHotels] = useState<Hotel[]>([]);
   useEffect(() => {
     getAllHotels().then(setHotels).catch((error) => {
-      console.log('error', error.message)
+      //console.log('error', error.message)
     });
   }, []);
   return (

@@ -27,7 +27,7 @@ import FloatingPricing from './FloatingPricing';
 import Hotel from '@/types/hotel';
 import AddToWhishlistButtonComponent from './AddToWhishlistButtonComponent';
 import { ScrollView } from 'react-native-virtualized-view';
-
+import { useBookingStore } from '@/store/booking/BookingStore';
 const { width } = Dimensions.get('window');
 
 
@@ -44,7 +44,7 @@ const HotelDetailsScreenComponent: React.FC<Props> = ({
   const handleGoBack = () => {
     router.back();
   };
-
+const {setRoom,selectedRoom,setHotel} = useBookingStore()
   return (
     <View style={tw`flex-1 bg-white relative  `} >
 
@@ -74,7 +74,7 @@ const HotelDetailsScreenComponent: React.FC<Props> = ({
         <AppText style={tw`my-1 px-4 text-black text-[${RFValue(20)}px] font-bold`}>
           Where you’ll live?
         </AppText>
-        <RoomSelection  rooms={hotel.rooms}/>
+        <RoomSelection rooms={hotel.rooms} />
         <Line />
         <Text style={[tw`my-4 px-4 text-black text-[${RFValue(20)}px] font-bold`, Colors.FontStyleMain]}>
           What this place offers
@@ -101,21 +101,24 @@ const HotelDetailsScreenComponent: React.FC<Props> = ({
         <Line />
       </ScrollView>
       <FloatingPricing price={hotel.pricePerNight}
-      selectGuests={true}
-      title='Check Availability'
-      onPress={
-        () => {
-          router.navigate(
-            {
-              pathname: '/hotel/details/avaiablity',
-              params: {
-                price: hotel.pricePerNight
+        selectGuests={false}
+
+        title='Check Availability'
+        onPress={
+          () => {
+            if(selectedRoom === null)setRoom(hotel.rooms[0])
+              setHotel(hotel)
+            router.navigate(
+              {
+                pathname: '/hotel/details/avaiablity',
+                params: {
+                  price: hotel.pricePerNight
+                }
               }
-            }
-          )
+            )
+          }
         }
-      }
-     confirm={false} hotel={hotel} />
+        confirm={false} hotel={hotel} />
     </View>
   );
 };

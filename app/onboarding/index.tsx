@@ -7,13 +7,14 @@ import Button from '@/components/onboarding/Button'
 import { Colors } from '@/constants/Colors'
 import Animated, { useSharedValue, useAnimatedStyle, withSpring, withDelay, withTiming, Easing } from 'react-native-reanimated'
 import { router } from 'expo-router'
-
+import { useBookingStore } from '@/store/booking/BookingStore'
 type Props = {}
 
 const Index = (props: Props) => {
   const logoOpacity = useSharedValue(0)
   const textOpacity = useSharedValue(0)
   const buttonsTranslateY = useSharedValue(100)
+  const { clearBookings } = useBookingStore()
 
   useEffect(() => {
     logoOpacity.value = withDelay(500, withSpring(1))

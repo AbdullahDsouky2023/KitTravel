@@ -12,7 +12,6 @@ const CalendarComponent = ({
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const {setDates,checkInDate,checkOutDate} = useBookingStore()
-console.log(checkInDate,checkOutDate)
   const onDayPress = (day: DateData) => {
     Vibration.vibrate(50); // Short vibration for feedback
     if(reservation){

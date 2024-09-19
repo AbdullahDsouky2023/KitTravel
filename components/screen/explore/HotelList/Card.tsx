@@ -11,6 +11,7 @@ import { useHotelsStore } from '@/store/hotels/HotelsStore'
 import useWhishlist from '@/hooks/useWhishlist'
 import AddToWhishlistButtonComponent from '../hotelDetails/AddToWhishlistButtonComponent'
 // import { Skeleton } from 'moti/skeleton'
+import { useBookingStore } from '@/store/booking/BookingStore'
 type Props = {
   hotel: Hotel
 }
@@ -18,12 +19,15 @@ type Props = {
 const Card = (props: Props) => {
   const { width } = useWindowDimensions();
   const { setHotel, deleteHotel } = useHotelsStore();
-  
-  
-  // console.log(props.hotel._id)
+  const {clearBooking} = useBookingStore()
+    const handelPress = () => {
+      clearBooking()
+      router.push(`/hotel/${props.hotel._id}`)
+    }
+  // //console.log(props.hotel._id)
   return (
     <Pressable
-      onPress={() => router.push(`/hotel/${props.hotel._id}`)}
+        onPress={handelPress}
       style={tw`relative w-[${width * 0.44}px]`}>
       <Image
         source={{ uri: props.hotel.images[0] } || card1}

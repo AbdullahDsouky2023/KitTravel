@@ -28,6 +28,7 @@ interface BookingState {
   saveBooking: () => void;
   userBookings: any[];
   getBookingsFromStorage: () => Promise<void>;
+  clearBookings: () => void;
 }
 
 export const useBookingStore = create<BookingState>()(
@@ -89,8 +90,10 @@ export const useBookingStore = create<BookingState>()(
       calculateTotalPrice: () => {
         const { checkInDate, checkOutDate, selectedRoom, hotel } = get();
         if (checkInDate && checkOutDate && selectedRoom && hotel) {
-          const nights = Math.ceil((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24));
-          const price = nights * hotel.pricePerNight;
+          const numberOfNights = checkInDate && checkOutDate
+          ? Math.ceil((checkOutDate?.getTime() - checkInDate?.getTime()) / (1000 * 60 * 60 * 24))
+          : 0;
+          const price = numberOfNights * hotel.pricePerNight;
           set({ totalPrice: price });
         }
       },
@@ -121,6 +124,9 @@ export const useBookingStore = create<BookingState>()(
           set({ userBookings: JSON.parse(bookings) });
         }
       },
+      clearBookings: () => set({
+        userBookings: []
+      }),
     }),
     {
       name: 'booking-storage',

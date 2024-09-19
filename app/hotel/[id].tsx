@@ -12,7 +12,7 @@ type Props = {}
 
 const HotelDetailsScreen = (props: Props) => {
     const { id } = useLocalSearchParams();
-    console.log('id', id)
+    //console.log('id', id)
     const [hotel, setHotel] = useState<Hotel | null>(null);
     useEffect(() => {
         getHotelById(id as string).then(setHotel);

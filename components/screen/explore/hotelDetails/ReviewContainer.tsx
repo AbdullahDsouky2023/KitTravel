@@ -13,7 +13,7 @@ type Props = {
 }
 
 const ReviewContainer = ({ reviews }: Props) => {
-  console.log(reviews)
+  //console.log(reviews)
   const averageRate = reviews.reduce((acc: any, review: any) => acc + review.rating, 0) / reviews.length;
 
   return (
